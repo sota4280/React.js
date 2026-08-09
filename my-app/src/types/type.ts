@@ -1,8 +1,8 @@
 // form入力値
 export type FormValues = {
   name: string;
-  user: string;
-  mail: string;
+  username: string;
+  email: string;
   password: string;
   confirmPassword: string;
   zip: string;
@@ -12,17 +12,7 @@ export type FormValues = {
 };
 
 // form エラー
-export type FormErrors = {
-  name: string;
-  user: string;
-  mail: string;
-  password: string;
-  confirmPassword: string;
-  zip: string;
-  prefecture: string;
-  municipalities: string;
-  address: string;
-};
+export type FormErrors = Record<keyof FormValues, string>;
 
 // アドレスAPI
 export type ZipAddress = {
@@ -36,5 +26,5 @@ export type ZipAddress = {
         zipcode: string;
       }[]
     | null;
-  status: string;
+  status: number;
 };

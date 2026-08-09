@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 import { paths } from "./utils/paths";
-import { FormPage } from "./pages/form";
+import { Form } from "./pages/form";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import "./index.css";
@@ -45,7 +45,7 @@ enableMocking().finally(() => {
         <BrowserRouter>
           <Routes>
             <Route path={paths.top} element={<App />} />
-            <Route path={paths.form} element={<FormPage />} />
+            <Route path={paths.form} element={<Form />} />
           </Routes>
         </BrowserRouter>
       </Provider>

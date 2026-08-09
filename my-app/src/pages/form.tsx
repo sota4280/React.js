@@ -5,21 +5,17 @@ import { LabelAndTextInput } from "../components/molecules";
 import { validation, isButtonDisabled } from "../utils/validation";
 import type { FormErrors, FormValues, ZipAddress } from "../types/type";
 import type { RootState, AppDispatch } from "../app/store";
-import { resetForm, setAddress, updateForm } from "../features/formSlice";
+import {
+  resetForm,
+  setAddress,
+  updateForm,
+  initialState,
+} from "../features/formSlice";
 
-const initialError: FormErrors = {
-  name: "",
-  user: "",
-  mail: "",
-  password: "",
-  confirmPassword: "",
-  zip: "",
-  prefecture: "",
-  municipalities: "",
-  address: "",
-};
+// formSlice.tsと追加・削除が連動するように修正
+const initialError: FormErrors = { ...initialState };
 
-export const FormPage: React.FC = () => {
+export const Form: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const form = useSelector((state: RootState) => state.form);
@@ -43,22 +39,22 @@ export const FormPage: React.FC = () => {
 
     const errorMessage = validation(key, value, nextForm);
 
+    // 変更された項目のエラーメッセージを更新
     setError((prev) => ({
       ...prev,
       [key]: errorMessage,
-    }));
 
-    // パスワード変更時に確認用パスワードも再チェック
-    if (key === "password" && nextForm.confirmPassword !== "") {
-      setError((prev) => ({
-        ...prev,
-        confirmPassword: validation(
-          "confirmPassword",
-          nextForm.confirmPassword,
-          nextForm,
-        ),
-      }));
-    }
+      // パスワード変更時に確認用パスワードも再チェック
+      ...(key === "password" && nextForm.confirmPassword !== ""
+        ? {
+            confirmPassword: validation(
+              "confirmPassword",
+              nextForm.confirmPassword,
+              nextForm,
+            ),
+          }
+        : {}),
+    }));
   };
 
   // 登録処理
@@ -140,23 +136,24 @@ export const FormPage: React.FC = () => {
 
         <LabelAndTextInput
           labelTitle="ユーザーネーム（任意）"
-          value={form.user}
+          value={form.username}
           placeholder="ユーザーネーム（任意）"
-          onChange={(value) => handleChange("user", value)}
-          errorMessage={error.user}
+          onChange={(value) => handleChange("username", value)}
+          errorMessage={error.username}
         />
 
         <LabelAndTextInput
           labelTitle="メールアドレス"
-          value={form.mail}
+          value={form.email}
           placeholder="sample@example.com"
-          onChange={(value) => handleChange("mail", value)}
-          errorMessage={error.mail}
+          onChange={(value) => handleChange("email", value)}
+          errorMessage={error.email}
         />
 
         <LabelAndTextInput
           labelTitle="パスワード"
           value={form.password}
+          type="password"
           placeholder="パスワード"
           onChange={(value) => handleChange("password", value)}
           errorMessage={error.password}
@@ -165,6 +162,7 @@ export const FormPage: React.FC = () => {
         <LabelAndTextInput
           labelTitle="パスワード確認"
           value={form.confirmPassword}
+          type="password"
           placeholder="パスワード確認"
           onChange={(value) => handleChange("confirmPassword", value)}
           errorMessage={error.confirmPassword}

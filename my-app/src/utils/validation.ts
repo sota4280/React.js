@@ -3,7 +3,7 @@ import { FormValues, FormErrors } from "../types/type";
 // 空欄表示　バリデーション
 const requiredKeys: (keyof FormValues)[] = [
   "name",
-  "mail",
+  "email",
   "password",
   "confirmPassword",
   "zip",
@@ -26,12 +26,12 @@ export const validation = (
   }
 
   // ニックネームは空欄でもエラーにしない
-  if (key === "user" && value.trim() === "") {
+  if (key === "username" && value.trim() === "") {
     return "";
   }
 
   // メールアドレス
-  if (key === "mail" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+  if (key === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
     return "正しいメールアドレスを入力してください";
   }
 

@@ -2,10 +2,10 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { FormValues } from "../types/type";
 
 // フォームの初期値
-const initialState: FormValues = {
+export const initialState: FormValues = {
   name: "",
-  user: "",
-  mail: "",
+  username: "",
+  email: "",
   password: "",
   confirmPassword: "",
   zip: "",
@@ -43,7 +43,6 @@ const formSlice = createSlice({
 
       state.prefecture = prefecture;
       state.municipalities = municipalities;
-      state.address = "";
     },
 
     // フォームを初期状態に戻す
@@ -56,5 +55,4 @@ const formSlice = createSlice({
 // 更新・追加・入力　状態を管理
 export const { updateForm, setAddress, resetForm } = formSlice.actions;
 
-// formレンダー実行
 export default formSlice.reducer;
