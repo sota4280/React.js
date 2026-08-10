@@ -5,6 +5,11 @@ import { Provider } from "react-redux";
 import { store } from "./app/store";
 import { paths } from "./utils/paths";
 import { Form } from "./pages/form";
+import { Index } from "./pages/index";
+import { Edit } from "./pages/edit";
+import { Login } from "./pages/login";
+import { MyPage } from "./pages/mypage";
+import { Register } from "./pages/register";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import "./index.css";
@@ -46,6 +51,11 @@ enableMocking().finally(() => {
           <Routes>
             <Route path={paths.top} element={<App />} />
             <Route path={paths.form} element={<Form />} />
+            <Route path={paths.index} element={<Index />} />
+            <Route path={paths.login} element={<Login />} />
+            <Route path={paths.mypage} element={<MyPage />} />
+            <Route path={paths.register} element={<Register />} />
+            <Route path={paths.edit} element={<Edit />} />
           </Routes>
         </BrowserRouter>
       </Provider>
