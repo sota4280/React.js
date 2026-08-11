@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Header } from "../components/organisms/Header";
-import { login } from "../features/headerSlice";
+import { login } from "../features/authSlice";
 import { paths } from "../utils/paths";
 
 export const Login = () => {

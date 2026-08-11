@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import formReducer from "../features/formSlice";
 import headerReducer from "../features/headerSlice";
+import authReducer from "../features/authSlice";
 
 // Reduxストアを作成
 export const store = configureStore({
@@ -9,6 +10,8 @@ export const store = configureStore({
     form: formReducer,
     // headerSliceを登録
     header: headerReducer,
+    // authSlice登録
+    auth: authReducer,
   },
 });
 

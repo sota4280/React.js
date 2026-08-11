@@ -3,7 +3,7 @@ import React from "react";
 type Props = {
   name: string;
   onClick?: () => void;
-  isDisabled: boolean;
+  isDisabled?: boolean;
   type: "button" | "submit"; 
 };
 
@@ -13,7 +13,7 @@ export const Button: React.FC<Props> = ({ name, onClick, isDisabled = false, typ
     : "bg-blue-600 text-white rounded w-full py-1";
 
   return (
-    <button className={baseClass} onClick={onClick} disabled={isDisabled} type={type} >
+    <button className={baseClass} onClick={onClick} disabled={isDisabled} type={type}>
       {name}
     </button>
   );

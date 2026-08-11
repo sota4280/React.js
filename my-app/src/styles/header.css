@@ -5,24 +5,31 @@
 
 .header-inner {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
 
+.brand {
+  display: flex;
+  height: 56px;
+  align-items: center;
+}
+
 .hamburger-button {
   position: absolute;
+  top: 16px;
   right: 16px;
   place-items: center;
   border: 0;
 }
 
 .global-navigation {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  left: 0;
+  flex-basis: 100%;
   display: none;
+  width: 100%;
   background: #edf3f7;
+  box-sizing: border-box;
 }
 
 .global-navigation.is-open { display: block; }
@@ -44,6 +51,7 @@
   .header-inner {
     width: 100%;
     min-height: 76px;
+    flex-wrap: nowrap;
     justify-content: space-between;
     padding: 0 40px;
     box-sizing: border-box;
@@ -55,6 +63,8 @@
   .global-navigation.is-open {
     position: static;
     display: flex;
+    flex-basis: auto;
+    width: auto;
     align-items: center;
     gap: 34px;
     padding: 0;
