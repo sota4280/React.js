@@ -28,3 +28,14 @@ export type ZipAddress = {
     | null;
   status: number;
 };
+
+// 会員登録
+export type RegisterFormValues = {
+  email: string;
+  password: string;
+  passwordConfirmation: string;
+  name: string;
+  image: File | null;
+};
+
+export type RegisterTextField = Exclude<keyof RegisterFormValues, "image">;

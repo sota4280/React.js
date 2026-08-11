@@ -14,7 +14,7 @@ export const TextInput: React.FC<Props> = ({
 }) => {
   return (
     <input
-      className="border border-gray rounded-sm w-full h-8 "
+      className="border border-gray rounded-sm w-full h-12 px-3 text-base"
       value={value}
       type={type}
       placeholder={placeholder}

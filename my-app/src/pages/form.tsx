@@ -58,7 +58,9 @@ export const Form: React.FC = () => {
   };
 
   // 登録処理
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (
+    event: React.SyntheticEvent<HTMLFormElement, SubmitEvent>,
+  ) => {
     event.preventDefault();
 
     if (isButtonDisabled(form, error)) {
