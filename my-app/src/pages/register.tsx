@@ -7,6 +7,7 @@ import { Button, ErrorMessage, ImagePicker } from "../components/atoms";
 import { LabelAndTextInput } from "../components/molecules";
 import { Header } from "../components/organisms/Header";
 import { login } from "../features/authSlice";
+import { login as setHeaderAuthenticated } from "../features/headerSlice";
 import {
   resetRegisterForm,
   setRegisterImage,
@@ -14,6 +15,7 @@ import {
 } from "../features/registerSlice";
 import type { RegisterTextField } from "../types/type";
 import { paths } from "../utils/paths";
+import { saveAccessToken } from "../utils/auth";
 import {
   isRegisterButtonDisabled,
   registerImageValidation,
@@ -70,8 +72,9 @@ export const Register: React.FC = () => {
     try {
       // API成功後にtokenを保存し、ログイン状態を更新してマイページへ移動する
       const token = await registerUser(form);
-      localStorage.setItem("access_token", token);
+      saveAccessToken(token);
       dispatch(login());
+      dispatch(setHeaderAuthenticated());
       dispatch(resetRegisterForm());
       navigate(paths.mypage);
     } catch (error) {

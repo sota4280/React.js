@@ -1,0 +1,22 @@
+.login-main {
+  width: min(100% - 40px, 560px);
+  margin: auto;
+  padding: 70px 0;
+}
+
+.login-main h1 {
+  margin-bottom: 40px;
+  font-size: 28px;
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.login-submit {
+  align-self: flex-end;
+  width: 150px;
+}

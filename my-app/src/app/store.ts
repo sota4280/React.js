@@ -3,6 +3,7 @@ import formReducer from "../features/formSlice";
 import headerReducer from "../features/headerSlice";
 import authReducer from "../features/authSlice";
 import registerReducer from "../features/registerSlice";
+import loginFormReducer from "../features/loginSlice";
 
 // Reduxストアを作成
 export const store = configureStore({
@@ -15,6 +16,8 @@ export const store = configureStore({
     auth: authReducer,
     // 会員登録フォームの入力値を管理するReducer
     register: registerReducer,
+    // ログインフォームの入力値を管理するReducer
+    loginForm: loginFormReducer,
   },
   // FileオブジェクトはJSONへ変換できないため、画像に関するActionとStateを
   // Redux Toolkitの直列化チェック対象から除外する

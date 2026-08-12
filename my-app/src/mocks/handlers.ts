@@ -18,4 +18,22 @@ export const handlers = [
       token: `register-token-${Date.now()}`,
     });
   }),
+
+  // ログイン
+  http.post("/api/login", async ({ request }) => {
+    const body = await request.json();
+
+    if (!body || typeof body !== "object") {
+      return HttpResponse.json(
+        { message: "入力内容を確認してください" },
+        { status: 400 },
+      );
+    }
+
+    return HttpResponse.json({
+      user: {
+        token: `login-token-${Date.now()}`,
+      },
+    });
+  }),
 ];

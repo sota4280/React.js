@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { isAuthenticated } from "../utils/auth";
 
 // 認証状態の型
 type AuthState = {
@@ -8,9 +9,7 @@ type AuthState = {
 // 認証状態の初期値
 const initialState: AuthState = {
   // アクセストークンがあればログイン済みとする
-  isLoggedIn:
-    typeof window !== "undefined" &&
-    Boolean(localStorage.getItem("access_token")),
+  isLoggedIn: typeof window !== "undefined" && isAuthenticated(),
 };
 
 // ログイン状態を管理するSlice

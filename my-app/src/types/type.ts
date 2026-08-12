@@ -39,3 +39,11 @@ export type RegisterFormValues = {
 };
 
 export type RegisterTextField = Exclude<keyof RegisterFormValues, "image">;
+
+// ログイン
+export type LoginFormValues = {
+  email: string;
+  password: string;
+};
+
+export type LoginField = keyof LoginFormValues;

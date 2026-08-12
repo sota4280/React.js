@@ -3,6 +3,8 @@ import type {
   FormValues,
   RegisterFormValues,
   RegisterTextField,
+  LoginField,
+  LoginFormValues,
 } from "../types/type";
 
 // 空欄表示　バリデーション
@@ -110,9 +112,7 @@ export const registerImageValidation = (file: File | null): string => {
     : "jpg画像を選択してください";
 };
 
-export const isRegisterButtonDisabled = (
-  form: RegisterFormValues,
-): boolean => {
+export const isRegisterButtonDisabled = (form: RegisterFormValues): boolean => {
   // 会員登録で入力が必要なテキスト項目
   const textFields: RegisterTextField[] = [
     "email",
@@ -128,3 +128,23 @@ export const isRegisterButtonDisabled = (
   // テキストまたは画像に問題がある場合は登録ボタンを無効にする
   return Boolean(hasInvalidText || registerImageValidation(form.image));
 };
+
+// ログイン画面の項目別バリデーション
+export const loginValidation = (key: LoginField, value: string): string => {
+  if (key === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+    return "メールアドレスの形式で入力してください";
+  }
+
+  if (key === "password" && !/^[A-Za-z0-9]{8,}$/.test(value)) {
+    return "英数8文字以上で入力してください";
+  }
+
+  return "";
+};
+
+// 未入力またはバリデーションエラーがある場合はログインボタンを無効にする
+export const isLoginButtonDisabled = (form: LoginFormValues): boolean =>
+  !form.email.trim() ||
+  !form.password.trim() ||
+  Boolean(loginValidation("email", form.email)) ||
+  Boolean(loginValidation("password", form.password));

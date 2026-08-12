@@ -6,13 +6,14 @@ import { login } from "../features/headerSlice";
 import { Header } from "../components/organisms/Header";
 import heroImg from "../assets/hero.png";
 import "../styles/index.css";
+import { isAuthenticated } from "../utils/auth";
 
 export const Index = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   // ログイン後にこのページが表示された時点でトークンを確認
-  const isLoggedIn = Boolean(localStorage.getItem("access_token"));
+  const isLoggedIn = isAuthenticated();
 
   // 保存済みトークンをReduxへ反映して、Headerも再レンダリングする
   useEffect(() => {
