@@ -29,6 +29,7 @@ export type ZipAddress = {
   status: number;
 };
 
+// 会員登録
 export type RegisterFormValues = {
   email: string;
   password: string;
