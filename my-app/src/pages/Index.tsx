@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { paths } from "../utils/paths";
 import { login } from "../features/headerSlice";
 import heroImg from "../assets/hero.png";
+import { isAuthenticated } from "../utils/auth";
 import "../styles/index.css";
 
 export const Index = () => {
@@ -12,7 +13,7 @@ export const Index = () => {
   const dispatch = useDispatch();
 
   // ログイン後にこのページが表示された時点でトークンを確認
-  const isLoggedIn = Boolean(localStorage.getItem("access_token"));
+   const isLoggedIn = isAuthenticated();
 
   // 保存済みトークンをReduxへ反映して、Headerも再レンダリングする
   useEffect(() => {

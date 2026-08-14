@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { paths } from "../../utils/paths";
 import { closeMenu, logout, toggleMenu } from "../../features/headerSlice";
 import heroImg from "../../assets/hero.png";
+import { clearAccessToken } from "../../utils/auth";
 import "../../styles/header.css";
 
 export function Header() {
@@ -15,7 +16,7 @@ export function Header() {
 
   // ログアウトしてトップページへ戻る
   const handleLogout = () => {
-    localStorage.removeItem("access_token");
+    clearAccessToken();
     dispatch(logout());
     navigate(paths.top);
   };

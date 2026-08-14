@@ -1,0 +1,18 @@
+.mypage-main {
+  display: grid;
+  min-height: calc(100svh - 76px);
+  place-items: center;
+}
+
+.mypage-profile {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.mypage-profile img {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+}

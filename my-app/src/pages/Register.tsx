@@ -70,7 +70,12 @@ export const Register: React.FC = () => {
     try {
       // API成功後にtokenを保存し、ログイン状態を更新してマイページへ移動する
       const token = await registerUser(form);
+      // トークン保存
       localStorage.setItem("access_token", token);
+
+      // ログ
+      console.log(token);
+
       dispatch(login());
       dispatch(resetRegisterForm());
       navigate(paths.mypage);
