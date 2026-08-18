@@ -1,0 +1,18 @@
+.index-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 20px;
+  text-align: center;
+}
+
+.index-content h1,
+.index-content p {
+  margin: 0;
+}
+
+.index-actions {
+  display: flex;
+  gap: 12px;
+}

@@ -10,7 +10,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
+    <div className="app-page">
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
@@ -31,6 +31,7 @@ function App() {
           Count is {count}
         </button>
         <Link to={paths.form}>Form課題</Link>
+        <Link to={paths.index}>React総合課題</Link>
       </section>
 
       <div className="ticks"></div>
@@ -118,7 +119,7 @@ function App() {
 
       <div className="ticks"></div>
       <section id="spacer"></section>
-    </>
+    </div>
   );
 }
 

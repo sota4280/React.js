@@ -3,7 +3,7 @@ import React from "react";
 type Props = {
   name: string;
   onClick?: () => void;
-  isDisabled: boolean;
+  isDisabled?: boolean;
   type: "button" | "submit"; 
 };
 
