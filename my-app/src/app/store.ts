@@ -2,6 +2,10 @@ import { configureStore } from "@reduxjs/toolkit";
 import formReducer from "../features/formSlice";
 import headerReducer from "../features/headerSlice";
 import authReducer from "../features/authSlice";
+import registerReducer from "../features/registerSlice";
+import loginFormReducer from "../features/loginSlice";
+import mypageReducer from "../features/mypageSlice";
+// import Reducer from "../features/Slice";
 
 // Reduxストアを作成
 export const store = configureStore({
@@ -12,7 +16,22 @@ export const store = configureStore({
     header: headerReducer,
     // authSlice登録
     auth: authReducer,
+    // 会員登録フォームの入力値を管理するReducer
+    register: registerReducer,
+    // ログインフォームの入力値を管理するReducer
+    loginForm: loginFormReducer,
+    //マイページの情報を管理するReducer
+    mypage: mypageReducer,
   },
+  // FileオブジェクトはJSONへ変換できないため、画像に関するActionとStateを
+  // Redux Toolkitの直列化チェック対象から除外する
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ["register/setRegisterImage"],
+        ignoredPaths: ["register.image"],
+      },
+    }),
 });
 
 // Stateの型定義

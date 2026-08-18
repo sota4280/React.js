@@ -29,6 +29,7 @@ export type ZipAddress = {
   status: number;
 };
 
+// 会員登録
 export type RegisterFormValues = {
   email: string;
   password: string;
@@ -38,3 +39,18 @@ export type RegisterFormValues = {
 };
 
 export type RegisterTextField = Exclude<keyof RegisterFormValues, "image">;
+
+// ログイン
+export type LoginFormValues = {
+  email: string;
+  password: string;
+};
+
+export type LoginField = keyof LoginFormValues;
+
+// マイページ
+export type User = {
+  name: string;
+  email: string;
+  representative_image: string;
+};
