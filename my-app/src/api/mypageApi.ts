@@ -17,6 +17,9 @@ export const getCurrentUser = async (): Promise<User> => {
   const data: UserResponse = await response.json().catch(() => ({}));
 
   if (!response.ok) {
+    if (response.status === 401) {
+      throw new AuthenticationError(data.message ?? "認証が必要です");
+    }
     throw new Error(data.message ?? "会員情報の取得に失敗しました");
   }
 

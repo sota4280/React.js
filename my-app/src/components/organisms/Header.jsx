@@ -63,6 +63,20 @@ export function Header() {
             <>
               <Link
                 className="nav-link"
+                to={paths.post}
+                onClick={() => dispatch(closeMenu())}
+              >
+                新規投稿画面
+              </Link>
+              <Link
+                className="nav-link"
+                to={paths.list}
+                onClick={() => dispatch(closeMenu())}
+              >
+                投稿一覧画面
+              </Link>
+              <Link
+                className="nav-link"
                 to={paths.edit}
                 onClick={() => dispatch(closeMenu())}
               >

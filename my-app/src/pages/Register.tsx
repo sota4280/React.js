@@ -14,6 +14,7 @@ import {
 } from "../features/registerSlice";
 import type { RegisterTextField } from "../types/type";
 import { paths } from "../utils/paths";
+import { saveAccessToken } from "../utils/auth";
 import {
   isRegisterButtonDisabled,
   registerImageValidation,
@@ -71,10 +72,7 @@ export const Register: React.FC = () => {
       // API成功後にtokenを保存し、ログイン状態を更新してマイページへ移動する
       const token = await registerUser(form);
       // トークン保存
-      localStorage.setItem("access_token", token);
-
-      // ログ
-      console.log(token);
+      saveAccessToken(token);
 
       dispatch(login());
       dispatch(resetRegisterForm());

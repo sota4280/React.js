@@ -54,3 +54,46 @@ export type User = {
   email: string;
   representative_image: string;
 };
+
+// 記事投稿
+export type PostText = {
+  title: string;
+  content: string;
+};
+
+// 詳細画面
+export type DetailText = {
+  name: string;
+  title: string;
+  content: string;
+};
+
+// 投稿一覧
+export type ArticlesResponse = {
+  current_page: number;
+  last_page: number;
+  per_page: number;
+  data: 
+    | {
+        article_id: number; // 記事ID
+        title: string; // タイトル
+        content: string; // 内容
+      }[]
+    | null;
+};
+
+export type Article = PostText & {
+  article_id: number;
+  user_name: string;
+};
+
+export type ArticleDetail = Pick<
+  Article,
+  "article_id" | "title" | "content" | "user_name"
+>;
+
+export type ArticleListResponse = {
+  current_page: number;
+  last_page: number;
+  data: Article[];
+};

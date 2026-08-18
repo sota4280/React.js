@@ -1,0 +1,55 @@
+.list-main {
+  width: min(100% - 40px, 760px);
+  margin: auto;
+  padding: 70px 0;
+}
+.list-main h1,
+.detail-main h1 {
+  margin-bottom: 35px;
+  text-align: center;
+  font-size: 24px;
+}
+.list-main table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.list-main th,
+.list-main td {
+  border: 1px solid #aebdca;
+  padding: 9px 12px;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.list-main th {
+  background: #d7e0e8;
+}
+.list-main th:first-child {
+  width: 32%;
+}
+.list-main a {
+  color: #4f46e5;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+.pagination button {
+  min-width: 34px;
+  min-height: 34px;
+  border: 1px solid #aebdca;
+  background: white;
+}
+.pagination button.current {
+  border-color: #675cf5;
+  color: #5145db;
+}
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.page-message {
+  text-align: center;
+}
