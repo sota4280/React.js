@@ -1,0 +1,41 @@
+.post-main {
+  width: min(100% - 40px, 560px);
+  margin: auto;
+  padding: 70px 0;
+}
+
+.post-page h1 {
+  margin-bottom: 40px;
+  font-size: 28px;
+  text-align: center;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.post-submit {
+  align-self: flex-end;
+  width: 150px;
+}
+
+.post-form input,
+.post-form textarea {
+  width: 100%;
+  border: 1px solid #aebdca;
+  border-radius: 3px;
+  padding: 10px;
+}
+.post-form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+.post-form label {
+  margin-bottom: -20px;
+}
+.form-error,
+.error {
+  color: #b42318;
+}

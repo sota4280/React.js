@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { isAuthenticated } from "../utils/auth";
 
 type HeaderState = {
   isOpen: boolean;
@@ -10,9 +11,7 @@ const initialState: HeaderState = {
   isOpen: false,
 
   // access_tokenがあればログイン済み
-  isLoggedIn:
-    typeof window !== "undefined" &&
-    Boolean(localStorage.getItem("access_token")),
+  isLoggedIn: typeof window !== "undefined" && isAuthenticated(),
 };
 
 const headerSlice = createSlice({
