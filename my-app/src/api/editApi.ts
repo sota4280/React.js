@@ -1,6 +1,6 @@
-import type { RegisterFormValues } from "../types/type";
+import type { EditFormValues } from "../types/type";
 
-type RegisterResponse = {
+type EditResponse = {
   token?: string;
   message?: string;
 };
@@ -14,34 +14,29 @@ const fileToBase64 = (file: File): Promise<string> =>
     reader.readAsDataURL(file);
   });
 
-export const registerUser = async (
-  form: RegisterFormValues,
-): Promise<string> => {
+export const editUser = async (form: EditFormValues): Promise<string> => {
   if (!form.image) throw new Error("画像を選択してください");
 
   // 画面のフォーム値をAPIのリクエスト形式へ変換して送信する
-  const response = await fetch("/api/register", {
+  const response = await fetch("/api/edit", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       name: form.name,
       email: form.email,
-      password: form.password,
-      password_confirmation: form.passwordConfirmation,
       representative_image: await fileToBase64(form.image),
     }),
   });
 
   // JSONを返さないエラーレスポンスの場合も画面側で処理できるようにする
-  const data: RegisterResponse = await response.json().catch(() => ({}));
+  const data: EditResponse = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    throw new Error(data.message ?? "会員登録に失敗しました");
+    throw new Error(data.message ?? "会員情報変更に失敗しました");
   }
   if (!data.token) {
     throw new Error("認証トークンを取得できませんでした");
   }
 
-  // 画面側では取得したtokenの保存と遷移だけを行う
   return data.token;
 };

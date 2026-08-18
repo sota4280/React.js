@@ -47,7 +47,9 @@ export const MyPage = () => {
 
   // アイコン未登録時はunknown.pngを表示する
   const imageSrc = user?.representative_image
-    ? `data:image/jpeg;base64,${user.representative_image}`
+    ? user.representative_image.startsWith("data:")
+      ? user.representative_image
+      : `data:image/jpeg;base64,${user.representative_image}`
     : "/unknown.png";
 
   return (

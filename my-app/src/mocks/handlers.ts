@@ -201,4 +201,44 @@ export const handlers = [
       user_name: article.user_name,
     });
   }),
+
+  // 編集内容を保存し、認証tokenを返す
+  http.post("/api/edit", async ({ request }) => {
+    const body = await request.json();
+    if (!body || typeof body !== "object") {
+      return HttpResponse.json(
+        { message: "入力内容を確認してください" },
+        { status: 400 },
+      );
+    }
+
+    const user = body as Partial<MockUser>;
+    if (!user.name || !user.email || !user.representative_image) {
+      return HttpResponse.json(
+        { message: "入力内容を確認してください" },
+        { status: 400 },
+      );
+    }
+
+    const registeredUser = getMockUser();
+    if (!registeredUser) {
+      return HttpResponse.json(
+        { message: "会員情報が見つかりません" },
+        { status: 404 },
+      );
+    }
+
+    // パスワードを維持したまま編集内容を保存する
+    const editUser: MockUser = {
+      ...registeredUser,
+      name: user.name,
+      email: user.email,
+      representative_image: user.representative_image,
+    };
+    localStorage.setItem(REGISTERED_USER_KEY, JSON.stringify(editUser));
+
+    return HttpResponse.json({
+      token: `edit-token-${Date.now()}`,
+    });
+  }),
 ];

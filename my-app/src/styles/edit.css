@@ -1,0 +1,27 @@
+.edit-main {
+  width: min(100% - 40px, 560px);
+  margin: auto;
+  padding: 70px 0;
+}
+
+.edit-main h1 {
+  margin-bottom: 40px;
+  font-size: 28px;
+  text-align: center;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.edit-submit {
+  align-self: flex-end;
+  width: 118px;
+}
+
+
+.image-picker {
+  border: 0;
+}

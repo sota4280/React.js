@@ -5,6 +5,8 @@ import type {
   RegisterTextField,
   LoginField,
   LoginFormValues,
+  EditFormValues,
+  EditTextField,
 } from "../types/type";
 
 // 空欄表示　バリデーション
@@ -148,3 +150,31 @@ export const isLoginButtonDisabled = (form: LoginFormValues): boolean =>
   !form.password.trim() ||
   Boolean(loginValidation("email", form.email)) ||
   Boolean(loginValidation("password", form.password));
+
+// 変更項目バリデーション
+export const editValidation = (key: EditTextField, value: string): string => {
+  // ログインIDがメールアドレス形式になっているか確認する
+  if (key === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+    return "メールアドレスの形式が正しくありません";
+  }
+
+  // ニックネームが8文字以上か確認する
+  if (key === "name" && value.length < 8) {
+    return "8文字以上で入力してください";
+  }
+
+  return "";
+};
+
+// 編集用のバリデーション
+export const isEditButtonDisabled = (form: EditFormValues): boolean => {
+  // 会員登録で入力が必要なテキスト項目
+  const textFields: EditTextField[] = ["email", "name"];
+  // 未入力またはバリデーションエラーの項目が1つでもあるか確認する
+  const hasInvalidText = textFields.some(
+    (key) => !form[key].trim() || editValidation(key, form[key]),
+  );
+
+  // テキストまたは画像にエラーがある場合は登録ボタンを無効にする
+  return Boolean(hasInvalidText || registerImageValidation(form.image));
+};

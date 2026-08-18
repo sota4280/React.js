@@ -73,7 +73,7 @@ export type ArticlesResponse = {
   current_page: number;
   last_page: number;
   per_page: number;
-  data: 
+  data:
     | {
         article_id: number; // 記事ID
         title: string; // タイトル
@@ -97,3 +97,12 @@ export type ArticleListResponse = {
   last_page: number;
   data: Article[];
 };
+
+// 編集
+export type EditFormValues = {
+  email: string;
+  name: string;
+  image: File | null;
+};
+
+export type EditTextField = Exclude<keyof EditFormValues, "image">;

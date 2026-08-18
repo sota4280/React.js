@@ -8,6 +8,7 @@ import mypageReducer from "../features/mypageSlice";
 import postReducer from "../features/postSlice";
 import detailReducer from "../features/detailSlice";
 import listReducer from "../features/listSlice";
+import editReducer from "../features/editSlice";
 
 // Reduxストアを作成
 export const store = configureStore({
@@ -30,14 +31,16 @@ export const store = configureStore({
     detail: detailReducer,
     //一覧表示の情報を管理するReducer
     list: listReducer,
+    //編集情報を管理するReducer
+    edit: editReducer,
   },
   // FileオブジェクトはJSONへ変換できないため、画像に関するActionとStateを
   // Redux Toolkitの直列化チェック対象から除外する
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: ["register/setRegisterImage"],
-        ignoredPaths: ["register.image"],
+        ignoredActions: ["register/setRegisterImage", "edit/setEditImage"],
+        ignoredPaths: ["register.image", "edit.image"],
       },
     }),
 });
