@@ -10,6 +10,7 @@ import { Edit } from "./pages/edit";
 import { Login } from "./pages/login";
 import { MyPage } from "./pages/mypage";
 import { Register } from "./pages/register";
+import { NotFound } from "./pages/notfound";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import "./index.css";
@@ -56,6 +57,7 @@ enableMocking().finally(() => {
             <Route path={paths.mypage} element={<MyPage />} />
             <Route path={paths.register} element={<Register />} />
             <Route path={paths.edit} element={<Edit />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </Provider>
