@@ -4,13 +4,16 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 import { paths } from "./utils/paths";
-import { Form } from "./pages/Form";
-import { Index } from "./pages/index";
-import { Edit } from "./pages/edit";
-import { Login } from "./pages/login";
+import { Form } from "./pages/form";
+import { Index } from "./pages/Index";
+import { Edit } from "./pages/Edit";
+import { Login } from "./pages/Login";
 import { MyPage } from "./pages/mypage";
-import { Register } from "./pages/register";
-import { NotFound } from "./pages/notfound";
+import { Register } from "./pages/Register";
+import { Post } from "./pages/Post";
+import { Detail } from "./pages/detail";
+import { List } from "./pages/List";
+import { NotFound } from "./pages/NotFound";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import "./index.css";
@@ -57,6 +60,9 @@ enableMocking().finally(() => {
             <Route path={paths.mypage} element={<MyPage />} />
             <Route path={paths.register} element={<Register />} />
             <Route path={paths.edit} element={<Edit />} />
+            <Route path={paths.post} element={<Post />} />
+            <Route path={paths.detail} element={<Detail />} />
+            <Route path={paths.list} element={<List />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
